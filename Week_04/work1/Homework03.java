@@ -1,6 +1,7 @@
 package java0.conc0303;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 本周作业：（必做）思考有多少种方式，在main函数启动一个新线程或线程池，
@@ -20,6 +21,12 @@ public class Homework03 {
         wayThree(++i);
         System.out.println();
         wayFour(++i);
+        System.out.println();
+        wayFive(++i);
+        System.out.println();
+        waySix(++i);
+        System.out.println();
+        waySeven(++i);
     }
 
     private static int sum() {
@@ -88,18 +95,73 @@ public class Homework03 {
     public static void wayFour(int i) {
         long start = System.currentTimeMillis();
         int[] sums = new int[1];
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(1, () -> {
-            sums[0] = sum();
 
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(1, () -> {
+            System.out.println(i + "异步计算结果为：" + sums[0]);
+            System.out.println(i + "使用时间：" + (System.currentTimeMillis() - start) + " ms");
         });
+
         new Thread(() -> {
             try {
+                sums[0] = sum();
                 cyclicBarrier.await();
-                System.out.println(i + "异步计算结果为：" + sums[0]);
-                System.out.println(i + "使用时间：" + (System.currentTimeMillis() - start) + " ms");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
+    }
+
+    /**
+     * Semaphore
+     * @param i
+     * @throws InterruptedException
+     */
+    public static void wayFive(int i) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        Semaphore semaphore = new Semaphore(1);
+        semaphore.acquire(1);
+        int[] sums = new int[1];
+        new Thread(() -> {
+            sums[0] = sum();
+            semaphore.release();
+        }).start();
+        semaphore.acquire();
+        System.out.println(i + "异步计算结果为：" + sums[0]);
+        System.out.println(i + "使用时间：" + (System.currentTimeMillis() - start) + " ms");
+    }
+
+    /**
+     * CAS AtomicInteger
+     * @param i
+     */
+    public static void waySix(int i){
+        long start = System.currentTimeMillis();
+        AtomicInteger atomicInteger = new AtomicInteger(1);
+        int[] sums = new int[1];
+        new Thread(() -> {
+            sums[0] = sum();
+            atomicInteger.incrementAndGet();
+        }).start();
+        while(atomicInteger.get() == 1){}
+        System.out.println(i + "异步计算结果为：" + sums[0]);
+        System.out.println(i + "使用时间：" + (System.currentTimeMillis() - start) + " ms");
+    }
+
+    private static volatile  int[] x = new int[]{1};
+
+    /**
+     * CAS volatile
+     * @param i
+     */
+    public static void waySeven(int i){
+        long start = System.currentTimeMillis();
+        int[] sums = new int[1];
+        new Thread(() -> {
+            sums[0] = sum();
+            x[0]++;
+        }).start();
+        while(x[0] == 1){}
+        System.out.println(i + "异步计算结果为：" + sums[0]);
+        System.out.println(i + "使用时间：" + (System.currentTimeMillis() - start) + " ms");
     }
 }
