@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.tulane.hatch.javacourse.week5.work3.TulaneConfiguration
