@@ -2,7 +2,7 @@
 
 
 
-**2.（必做）**读写分离 - 动态切换数据源版本 1.0
+**2.（必做）读写分离 - 动态切换数据源版本 1.0**
 
 
 
@@ -118,9 +118,9 @@ public class WebController {
 
 * 测试结果如下:
 
-![image-20201202184653787](/Users/Tulane/Library/Application Support/typora-user-images/image-20201202184653787.png)
+![image-20201202184653787](images/image-20201202184653787.png)
 
-![image-20201202184810817](/Users/Tulane/Library/Application Support/typora-user-images/image-20201202184810817.png)
+![image-20201202184810817](images/image-20201202184810817.png)
 
 
 
