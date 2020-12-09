@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `tulane`.`t_order_info` (
   `create_time` BIGINT(20) NULL,
   `update_time` BIGINT(20) NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `order_number_UNIQUE` (`order_number` ASC) VISIBLE)
+  UNIQUE INDEX `order_number_UNIQUE` (`order_number` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COMMENT = '订单表';
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `tulane`.`t_order_back_info` (
   `create_time` BIGINT(20) NULL,
   `update_time` BIGINT(20) NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `back_number_UNIQUE` (`back_number` ASC) VISIBLE)
+  UNIQUE INDEX `back_number_UNIQUE` (`back_number` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COMMENT = '订单退货单';
