@@ -9,11 +9,11 @@ import club.tulane.rpcfx.demo.api.UserService;
 public class RpcfxClientApplication {
 
     public static void main(String[] args) {
-        UserService userService = RpcfxFactory.getInstance().create(UserService.class, "http://localhost:8080/");
+        UserService userService = RpcfxFactory.getInstance().create(UserService.class, "http://127.0.0.1:8090/");
         final User user = userService.findById(1);
         System.out.println("find user id=1 from server: " + user.getName());
 
-        OrderService orderService = RpcfxFactory.getInstance().create(OrderService.class, "http://localhost:8080/");
+        OrderService orderService = RpcfxFactory.getInstance().create(OrderService.class, "http://127.0.0.1:8090/");
         final Order order = orderService.findOrderById(1992129);
         System.out.println(String.format("find order name=%s, amount=%f", order.getName(), order.getAmount()));
     }

@@ -5,6 +5,9 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+/**
+ * Rpc寻址实现类
+ */
 public class SpringResolver implements RpcResolver, ApplicationContextAware {
 
     private ApplicationContext applicationContext;

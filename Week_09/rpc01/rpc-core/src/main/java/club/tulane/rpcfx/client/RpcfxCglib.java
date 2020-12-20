@@ -3,6 +3,9 @@ package club.tulane.rpcfx.client;
 import com.alibaba.fastjson.parser.ParserConfig;
 import net.sf.cglib.proxy.Enhancer;
 
+/**
+ * 字节码动态代理
+ */
 public class RpcfxCglib implements Rpcfx{
 
     static{

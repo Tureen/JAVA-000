@@ -4,6 +4,9 @@ import com.alibaba.fastjson.parser.ParserConfig;
 
 import java.lang.reflect.Proxy;
 
+/**
+ * JDK动态代理
+ */
 public class RpcfxJDK implements Rpcfx{
 
     static {
