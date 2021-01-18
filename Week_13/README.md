@@ -3,7 +3,7 @@
 **周四作业：**
 **1.（必做）**搭建 ActiveMQ 服务，基于 JMS，写代码分别实现对于 queue 和 topic 的消息生产和消费，代码提交到 github。
 
-链接: 
+链接: https://github.com/Tureen/JAVA-000/tree/main/Week_13/weekend-4
 
 
 
@@ -78,4 +78,4 @@ listeners=PLAINTEXT://localhost:9001 ## 三个文件分别改为9001, 9002, 9003
 
 **实现 spring kafka 下对 kafka 集群的操作**
 
-链接: 
+链接: https://github.com/Tureen/JAVA-000/tree/main/Week_13/weekend-6
